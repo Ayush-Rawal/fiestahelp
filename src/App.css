@@ -16,6 +16,7 @@ body {
   min-height: 100vh;
   background: var(--color-background-primary);
   color: var(--color-primary);
+  font-family: 'Lato', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, Helvetica, sans-serif;
 }
 
 #root {
