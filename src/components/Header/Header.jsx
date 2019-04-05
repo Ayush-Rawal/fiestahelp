@@ -18,8 +18,10 @@ export function Header() {
                     </div>
                 </section>
             </Link>
-            <Navbar />
-            <UserProfile />
+            <div className={css.header__left}>
+                <Navbar />
+                <UserProfile />
+            </div>
         </header>
     )
 }

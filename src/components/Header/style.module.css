@@ -2,9 +2,15 @@
     max-height: 6%;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+.header__left {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .logo {
@@ -13,6 +19,7 @@
 }
 
 .logo__link {
+    margin-left: 2em;
     color: #be0c56;
     max-width: 55%;
     /* color: var(--color-primary-dark); */
@@ -22,10 +29,13 @@
     color: #be0c56;
     background: transparent;
 }
-
+.logo__link:hover, .logo__link:active {
+    outline: none;
+    border: none;
+}
 .logo__image {
-    max-height: 5%;
-    max-width: 5%;
+    max-height: 4rem;
+    max-width: 4rem;
 }
 
 .logo__name {
