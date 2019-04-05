@@ -1,5 +1,15 @@
-.App {
-  text-align: center;
+:root {
+  --color-primary: #E43756;
+  --color-primary-dark: #CD1032;
+  --color-primary-darker: #A00520;
+  --color-primary-light: #F15B76;
+  --color-primary-lighter: #F68599;
+  --color-secondary: #F37F3B;
+  --color-secondary-dark: #DA5C11;
+  --color-secondary-light: #FF9B60;
+  --color-secondary-lighter: #FFB68A;
+  --color-background-primary: #fdf8fc;
+  --color-background-secondary: #FFE5D5;
 }
 
 .App-logo {
