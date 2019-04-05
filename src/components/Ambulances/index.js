@@ -1,0 +1,1 @@
+export {Ambulances as default} from './Ambulances'
