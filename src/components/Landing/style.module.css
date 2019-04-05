@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.title {
+    font-size: 4em;
+    color: crimson;
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-secondary-dark);
+}
+.btn {
+    background-color: var(--color-secondary-lighter);
+    color: var(--color-primary-dark);
+    padding: 0.6em;
+    /* border-radius: 100%; */
+    font-size: 1.3em;
+    border: 2px solid var(--color-secondary-dark);
+}
+.btn:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--color-secondary);
+    border-color: var(--color-primary-dark);
+}
