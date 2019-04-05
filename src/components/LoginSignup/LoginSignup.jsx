@@ -14,15 +14,24 @@ export function LoginSignup() {
                 <>
                 <h2 className={css.header}>{screen === "login"? "Login" : "Signup"}</h2>
                 <form className={css.form}>
-                        <input className={css.form__input} type="email" required onChange={function (e) {setEmail(e.target.value)}} value={email} name="email" />
-                    <label className={css.form__label} for="email">Email: </label>
-                        <input className={css.form__input} type="password" required onChange={function (e) {setPassword(e.target.value)}} value={password} name="password" />
-                    <label className={css.form__label} for="password">Password: </label>
+                        <div className={css.form__group}>
+                            <input className={css.form__input} type="email" required onChange={function (e) {setEmail(e.target.value.toLowerCase())}} value={email} name="email" />
+                            <label className={css.form__label} for="email">Email: </label>
+                        </div>
+
+                        <div className={css.form__group}>
+                            <input className={css.form__input} type="password" required onChange={function (e) {setPassword(e.target.value.toLowerCase())}} value={password} name="password" />
+                            <label className={css.form__label} for="password">Password: </label>
+                        </div>
                     {
                         (screen === "signup")
                         &&
-                        (<><input className={css.form__input} type="password" required onChange={function (e) {setPassword2(e.target.value)}} value={password2} name="confirmPassword" />
-                        <label className={css.form__label} for="confirmPassword">Confirm Password </label></>)
+                        (
+                        <div className={css.form__group}>
+                            <input className={css.form__input} type="password" required onChange={function (e) {setPassword2(e.target.value.toLowerCase())}} value={password2} name="confirmPassword" />
+                            <label className={css.form__label} for="confirmPassword">Confirm Password </label>
+                        </div>
+                        )
                     }
                     <button type="submit" disabled={isSubmitting} >Submit</button>
                     {(screen === "login")
