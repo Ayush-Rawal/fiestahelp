@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
+import LoginSignup from '../LoginSignup'
 
 let defaultAuth = {
-    isAuthenticated: true,
+    isAuthenticated: false,
     provider: "",
     user: {},
     logout: () => {}
@@ -22,12 +23,3 @@ export function AuthWall({children, ...rest}) {
             </AuthContext.Consumer>            
     )
 }
-
-function LoginSignup () {
-    return (
-        <div>
-            login or signup
-        </div>
-    )
-}
-
