@@ -23,10 +23,10 @@ body {
   flex-flow: column wrap;
   justify-content: flex-start;
   align-items: center;
-  background: url("./images/arron-choi-512674-unsplash.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* background: url("./images/arron-choi-512674-unsplash.jpg"); */
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
 
 }
 
