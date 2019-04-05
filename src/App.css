@@ -12,32 +12,42 @@
   --color-background-secondary: #FFE5D5;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
+body {
   min-height: 100vh;
+  background: var(--color-background-primary);
+}
+
+#root {
+  height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: url("./images/arron-choi-512674-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
 }
 
-.App-link {
-  color: #61dafb;
+button {
+  padding: 0.3rem 0.6rem;
+  margin: 0.3rem 0.6rem
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a {
+  color: var(--color-primary-light);
+  padding: 0.3em 0.5em;
+  /* background: var(--color-background-secondary); */
+  text-decoration: var(--color-secondary);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+  background: var(--color-secondary-lighter);
+  text-decoration: var(--color-secondary-lighter);
+}
+
+.btn {
+  border-radius: 50%;
 }
