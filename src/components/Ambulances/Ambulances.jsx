@@ -3,76 +3,18 @@ import css from './style.module.css'
 import Loading from '../Loading'
 
 export function Ambulances() {
-    const [ambulances, setAmbulances] = useState([
-        {
-            name: "Dhanno",
-            driver: {
-                name: "Basanti",
-                phone: "8866442288"
-            },
-            booked: true
-        }, {
-            name: "Bachaa ke chodungi",
-            driver: {
-                name: "Chandramukhi Chautala",
-                phone: "1001001001"
-            },
-            booked: false
-        }, {
-            name: "Dhanno",
-            driver: {
-                name: "Basanti",
-                phone: "8866442288"
-            },
-            booked: true
-        }, {
-            name: "Bachaa ke chodungi",
-            driver: {
-                name: "Chandramukhi Chautala",
-                phone: "1001001001"
-            },
-            booked: false
-        }, {
-            name: "Dhanno",
-            driver: {
-                name: "Basanti",
-                phone: "8866442288"
-            },
-            booked: true
-        }, {
-            name: "Bachaa ke chodungi",
-            driver: {
-                name: "Chandramukhi Chautala",
-                phone: "1001001001"
-            },
-            booked: false
-        }, {
-            name: "Dhanno",
-            driver: {
-                name: "Basanti",
-                phone: "8866442288"
-            },
-            booked: true
-        }, {
-            name: "Bachaa ke chodungi",
-            driver: {
-                name: "Chandramukhi Chautala",
-                phone: "1001001001"
-            },
-            booked: false
-        }
-    ])
-    // useEffect(()=> {
-    //     fetch()
-    //     .then(function (res) {
-    //         return res.json()
-    //     })
-    //     .then(function (res) {
-    //         if(res.data) {
-    //             setAmbulances(res.data)
-    //         }
-    //     })
-    // })
+    const [ambulances, setAmbulances] = useState([])
+    useEffect(()=> {
+        fetch("https://fiestahelp.herokuapp.com/api/ambulance")
+        .then(function (res) {
+            return res.json()
+        })
+        .then(function (res) {
+            if(res.ok) {
+                setAmbulances(res.data)
+            }
+        })
+    })
     return (
         <>
         <h2 className={css.title}>Ambulances</h2>
