@@ -35,10 +35,11 @@ function EditAmbulances () {
     const [name, setName] = useState("")
     const [driverName, setDriverName] = useState("")
     const [driverPhone, setDriverPhone] = useState("")
+    const [message, setMessage] = useState("")
 
     function submit(e) {
         e.preventDefault()
-        fetch("https://fiestahelp.herokuapp.com/api/", {
+        fetch("https://fiestahelp.herokuapp.com/api/ambulance", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -46,12 +47,18 @@ function EditAmbulances () {
             body: JSON.stringify({
                 _id,
                 name,
-                driverName,
-                driverPhone
+                driver: {
+                    name:driverName,
+                    phone:driverPhone
+                }                
             })
         })
         .then(res => res.ok? res.json : res)
-        .then(res => console.log(res))
+        .then(res => {
+            if(res.ok) {
+                setMessage("Completed successfully")
+            }
+        })
     }
 
     return (
@@ -75,16 +82,18 @@ function EditAmbulances () {
                 <label className={css.form__label} htmlFor="driverPhone">Driver Phone: </label>
             </div>
             <button className={css.form__submit} type="submit" >Submit</button>
+            {message? <p>{message}</p>: ""}
         </form>
     )
 }
 
 function DeleteAmbulance() {
     const [_id, set_id] = useState("")
+    const [message, setMessage] = useState("")
 
     function submit(e) {
         e.preventDefault()
-        fetch("https://fiestahelp.herokuapp.com/api/", {
+        fetch("https://fiestahelp.herokuapp.com/api/ambulance", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -94,17 +103,22 @@ function DeleteAmbulance() {
             })
         })
         .then(res => res.ok? res.json : res)
-        .then(res => console.log(res))
+        .then(res => {
+            if(res.ok) {
+                setMessage("Completed successfully")
+            }
+        })
     }
 
     return (
-        <form className={css.form}>
+        <form className={css.form} onSubmit={submit}>
             <p>Ambulance to delete: </p>
             <div className={css.form__group}>
                 <input className={css.form__input} required onChange={function (e) {set_id(e.target.value.toLowerCase())}} value={_id} name="_id" />
                 <label className={css.form__label} htmlFor="_id">_id: </label>
             </div>
             <button className={css.form__submit} type="submit">Submit</button>
+            {message? <p>{message}</p>: ""}
         </form>
     )    
 }
@@ -113,26 +127,33 @@ function AddAmbulance () {
     const [name, setName] = useState("")
     const [driverName, setDriverName] = useState("")
     const [driverPhone, setDriverPhone] = useState("")
+    const [message, setMessage] = useState("")
 
     function submit(e) {
         e.preventDefault()
-        fetch("https://fiestahelp.herokuapp.com/api/", {
+        fetch("https://fiestahelp.herokuapp.com/api/ambulance", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 name,
-                driverName,
-                driverPhone
+                driver: {
+                    name:driverName,
+                    phone:driverPhone
+                }
             })
         })
         .then(res => res.ok? res.json : res)
-        .then(res => console.log(res))
+        .then(res => {
+            if(res.ok) {
+                setMessage("Completed successfully")
+            }
+        })
     }
 
     return (
-        <form className={css.form}>
+        <form className={css.form} onSubmit={submit}>
             <p>Details to Add:</p>
             <div className={css.form__group}>
                 <input className={css.form__input} required onChange={function (e) {setName(e.target.value.toLowerCase())}} value={name} name="name" />
@@ -147,6 +168,7 @@ function AddAmbulance () {
                 <label className={css.form__label} htmlFor="driverPhone">Driver Phone: </label>
             </div>
             <button className={css.form__submit} type="submit" >Submit</button>
+            {message? <p>{message}</p>: ""}
         </form>
     )
 }
