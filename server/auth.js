@@ -3,7 +3,6 @@ const express = require('express')
 const router = express.Router()
 const passport = require("passport")
 const GithubStrategy = require('passport-github')
-const LocalStrategy = require('passport-local').Strategy
 const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID
 const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET
 const user = require('./models').user
@@ -27,30 +26,24 @@ router.get('/github/cb',
       return res.json({ok:true, name: res.displayName})
   }
 );
+  
+router.post('/', function(req, res) {
+    user.findOne({
+        email: req.body.email
+      }, function(err, user) {
+        if (err) {
+          return res.json({ok:false,err});
+        }
 
-passport.use(new LocalStrategy(
-    function(username, password, done) {
-        user.findOne({
-          username: username
-        }, function(err, user) {
-          if (err) {
-            return done(err);
-          }
-  
-          if (!user) {
-            return done(null, false);
-          }
-  
-          if (user.password != password) {
-            return done(null, false);
-          }
-          return done(null, user);
-        });
-    }
-));
-  
-router.post('/', passport.authenticate('local'), function(req, res) {
-    return res.json({ok: true, name: req.user.username});
+        if (!user) {
+          return res.json({ok:false,err:"No User found"});
+        }
+
+        if (user.password != req.body.password) {
+          return res.json({ok:false,err:"Incorrect password"})
+        }
+        return res.json({ok: true, name: user.name});
+      });
 });
 
 router.post('/register', function (req, res) {
@@ -61,6 +54,7 @@ router.post('/register', function (req, res) {
         name: req.body.name,
         email: req.body.email,
         phone: req.body.phone || "",
+        password: req.body.password,
         isModerator: false
     })
     .then(function(data) {
