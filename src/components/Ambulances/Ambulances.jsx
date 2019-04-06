@@ -32,7 +32,7 @@ export function Ambulances() {
 function showAmbulance(ambulance) {
     return (
         <section className={css.ambulance}>
-            <img className={css.ambulance__image} src="" alt="an ambulance"/>
+            <img className={css.ambulance__image} src="../../images/download.png" alt="an ambulance"/>
             <h3 className={css.ambulance__name}>{ambulance.name}</h3>
             {/* <section className={css.driver}> */}
             <p className={css.driver__name}>Driver: {ambulance.driver.name}</p>
