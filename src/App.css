@@ -50,6 +50,10 @@ a:hover {
   text-decoration: var(--color-secondary-lighter);
 }
 
+h1, h2, h3 {
+  font-family: 'Fira Sans', 'Courier New', Courier, monospace;
+}
+
 .btn {
   border-radius: 50%;
 }
