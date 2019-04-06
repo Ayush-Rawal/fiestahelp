@@ -28,6 +28,10 @@ app.use(session({secret: "Real Secret"}))
 app.use(passport.initialize())
 app.use(passport.session())
 
+passport.serializeUser(function(user, done) {
+  done(null, user.name);
+});
+
 app.get("/", function (req, res) {
     return res.sendFile(path.resolve(__dirname, "./build/index.html"))
 })
