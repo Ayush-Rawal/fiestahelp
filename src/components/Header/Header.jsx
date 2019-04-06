@@ -34,7 +34,7 @@ function UserProfile () {
                 (
                     <div>
                         Hi {user.user.name},
-                        <button>logout</button>
+                        <button onClick={user.logout}>logout</button>
                     </div>
                 ) : (
                     <button>Login</button>                    
