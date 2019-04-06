@@ -3,7 +3,7 @@ import css from './style.module.css'
 import {AuthContext} from '../AuthWall'
 
 export function LoginSignup() {
-    const [provider, setProvider] = useState("email") // email, phone, twitter, github
+    const [provider, setProvider] = useState("email") // email, phone, github
     const [screen, setScreen] = useState("login")
 
     return (
@@ -23,7 +23,6 @@ export function LoginSignup() {
                 <div className={css.providers}>
                     {provider !== "email" && (<button className={css.provider} onClick={function() {setProvider("email")}} >Login with Email</button>)}
                     {provider !== "phone" && (<button className={css.provider} onClick={function() {setProvider("phone")}} >Login with Phone</button>)}
-                    <button className={css.provider} onClick={function() {setProvider("twitter")}} >Login with Twitter</button>
                     <button className={css.provider} onClick={function() {githubAuth()}} >Login with GitHub</button>
                 </div>
 
@@ -84,7 +83,7 @@ function PhoneLoginSignup () {
 }
 
 function githubAuth () {
-    fetch("/auth/github")
+    fetch("https://fiestahelp.herokuapp.com/auth/github")
     .then(res => res.json())
     .then(res => console.log(res))
 }
