@@ -1,0 +1,1 @@
+export {ModeratorDashboard as default} from './ModeratorDashboard'

@@ -1,0 +1,59 @@
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 1em;
+}
+
+.view__wrapper {
+    position: relative;
+    padding: 2em;
+    border-right: 2px solid var(--color-primary);
+}
+
+.view__container {
+    margin: 50% auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.view {
+    flex: 1;
+    color: var(--color-primary-light);
+    /* margin: 1em 0; */
+    padding: 1.3em 0.5em;
+    text-decoration: var(--color-secondary);
+    list-style: none;
+}
+
+.view:hover {
+    color: var(--color-primary-dark);
+    background: var(--color-secondary-lighter);
+    text-decoration: var(--color-secondary-lighter);
+    cursor: pointer;
+}
+
+.form {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.form__group {
+    position: relative;
+    margin: 0.7em;
+}
+
+.form__input {
+    padding: 0.7em 1em 0 1em;
+    height: 3em;
+}
+
+.form__label {
+    /* margin: 1em; */
+    position: absolute;
+    top: 2%;
+    left: 2%;
+}
