@@ -11,7 +11,7 @@ const user = require('./models').user
 passport.use(new GithubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: "/auth/github/cb"
+    // callbackURL: "/auth/github/cb"
 }, function (accessToken, refreshToken, profile, cb) {
     console.log(profile)
     return cb(null, profile)
