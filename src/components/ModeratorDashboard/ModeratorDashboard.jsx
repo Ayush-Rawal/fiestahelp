@@ -35,8 +35,27 @@ function EditAmbulances () {
     const [name, setName] = useState("")
     const [driverName, setDriverName] = useState("")
     const [driverPhone, setDriverPhone] = useState("")
+
+    function submit(e) {
+        e.preventDefault()
+        fetch("https://fiestahelp.herokuapp.com/api/", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                _id,
+                name,
+                driverName,
+                driverPhone
+            })
+        })
+        .then(res => res.ok? res.json : res)
+        .then(res => console.log(res))
+    }
+
     return (
-        <form className={css.form}>
+        <form className={css.form} onSubmit={submit}>
             <p>Ambulance to update: </p>
             <div className={css.form__group}>
                 <input className={css.form__input} required onChange={function (e) {set_id(e.target.value.toLowerCase())}} value={_id} name="_id" />
@@ -62,6 +81,22 @@ function EditAmbulances () {
 
 function DeleteAmbulance() {
     const [_id, set_id] = useState("")
+
+    function submit(e) {
+        e.preventDefault()
+        fetch("https://fiestahelp.herokuapp.com/api/", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                _id
+            })
+        })
+        .then(res => res.ok? res.json : res)
+        .then(res => console.log(res))
+    }
+
     return (
         <form className={css.form}>
             <p>Ambulance to delete: </p>
@@ -78,6 +113,24 @@ function AddAmbulance () {
     const [name, setName] = useState("")
     const [driverName, setDriverName] = useState("")
     const [driverPhone, setDriverPhone] = useState("")
+
+    function submit(e) {
+        e.preventDefault()
+        fetch("https://fiestahelp.herokuapp.com/api/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name,
+                driverName,
+                driverPhone
+            })
+        })
+        .then(res => res.ok? res.json : res)
+        .then(res => console.log(res))
+    }
+
     return (
         <form className={css.form}>
             <p>Details to Add:</p>
