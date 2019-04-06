@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import css from './style.module.css'
 import {AuthContext} from '../AuthWall'
 
@@ -34,17 +34,48 @@ export function LoginSignup() {
 
 function EmailLoginSignup ({screen}) {
     const [isSubmitting, setSubmitting] = useState(false)
+    const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [password2, setPassword2] = useState("")
+    let auth = useContext(AuthContext)
+
+    function submit(e) {
+        e.preventDefault()
+        if(screen === "signup" && password !== password2) {
+            console.log("Passwords don't match")
+        }
+        fetch(`https://fiestahelp.herokuapp.com/auth/${(screen === "signup" ? "register": "")}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                password
+            })
+        })
+        .then(res => res.ok ? res.json() : res)
+        .then(res => {
+            if(res.ok) {
+                auth.setUser(res.data.name, false)
+            }
+            console.log(res)
+        })
+    }
+
     return (
         <>
-        <form className={css.form}>
+        <form className={css.form} onSubmit={submit}>
+            <div className={css.form__group}>
+                <input className={css.form__input} required onChange={function (e) {setName(e.target.value.toLowerCase())}} value={name} name="name" />
+                <label className={css.form__label} htmlFor="name">Name: </label>
+            </div>
             <div className={css.form__group}>
                 <input className={css.form__input} type="email" required onChange={function (e) {setEmail(e.target.value.toLowerCase())}} value={email} name="email" />
                 <label className={css.form__label} htmlFor="email">Email: </label>
             </div>
-
             <div className={css.form__group}>
                 <input className={css.form__input} type="password" required onChange={function (e) {setPassword(e.target.value.toLowerCase())}} value={password} name="password" />
                 <label className={css.form__label} htmlFor="password">Password: </label>
@@ -70,7 +101,7 @@ function PhoneLoginSignup () {
     const [isSubmitting, setSubmitting] = useState(false)
     return (
         <>
-        <form className={css.form}>
+        <form className={css.form} >
             <div className={css.form__group}>
                 <input className={css.form__input} type="tel" required onChange={function (e) {setPhone(e.target.value.toLowerCase())}} value={phone} name="phone" />
                 <label className={css.form__label} htmlFor="phone">Mob: </label>
