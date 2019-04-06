@@ -2,7 +2,9 @@
     font-size: 2em;
     color: var(--color-secondary);
 }
-
+* {
+    text-align: center;
+}
 .form {
     display: flex;
     flex-flow: column wrap;
