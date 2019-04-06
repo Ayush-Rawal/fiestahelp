@@ -6,6 +6,10 @@ const session = require("express-session")
 const passport = require("passport")
 const path = require("path")
 const mongoose = require("mongoose")
+const cors = require("cors")
+const auth = require("./server/auth")
+
+app.use(cors())
 
 mongoose.connect('mongodb://localhost:27017/fiesta', {useNewUrlParser: true})
 
@@ -24,11 +28,13 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.get("/", function (req, res) {
-    return res.sendFile(path.resolve(__dirname, "./public/index.html"))
+    return res.sendFile(path.resolve(__dirname, "./build/index.html"))
 })
 
+app.use('/auth', auth)
+
 app.get("*", function (req, res) {
-    return res.sendFile(path.resolve(__dirname, "./public/index.html"))
+    return res.sendFile(path.resolve(__dirname, "./build/index.html"))
 })
 
 app.listen(process.env.port || 8080, () => console.log(`listening on ${process.env.port || 8080}`))
