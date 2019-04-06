@@ -8,6 +8,7 @@ const path = require("path")
 const mongoose = require("mongoose")
 const cors = require("cors")
 const auth = require("./server/auth")
+const api = require("./server/api")
 
 app.use(cors())
 
@@ -32,6 +33,7 @@ app.get("/", function (req, res) {
 })
 
 app.use('/auth', auth)
+app.use('/api', api)
 
 app.get("*", function (req, res) {
     return res.sendFile(path.resolve(__dirname, "./build/index.html"))
