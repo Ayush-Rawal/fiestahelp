@@ -1,25 +1,21 @@
 import React from 'react'
-import LoginSignup from '../LoginSignup'
 
 let defaultAuth = {
     isAuthenticated: false,
-    provider: "",
-    user: {},
+    user: {
+        name: "",
+        isModerator: false
+    },
     logout: () => {}
 }
 
 export let AuthContext = React.createContext(defaultAuth)
 
-export function AuthWall({children, ...rest}) {
+export function AuthWall({children}) {
 
     return (
-            <AuthContext.Consumer>
-                {value => (
-                    value.isAuthenticated?
-                    children
-                    :
-                    (<LoginSignup />)
-                )}
-            </AuthContext.Consumer>            
+            <AuthContext.Provider value={defaultAuth}>
+                    {children}
+            </AuthContext.Provider>            
     )
 }
