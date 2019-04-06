@@ -47,7 +47,7 @@ router.post('/login', function(req, res) {
         if (user.password != req.body.password) {
           return res.json({ok:false,err:"Incorrect password"})
         }
-        return res.json({ok: true, name: user.name});
+        return res.json({ok: true, data:{name: user.name}});
       });
 });
 

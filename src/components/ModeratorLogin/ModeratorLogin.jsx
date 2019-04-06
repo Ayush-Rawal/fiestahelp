@@ -23,7 +23,7 @@ export function ModeratorLogin() {
         .then(res => res.ok ? res.json() : res)
         .then(res => {
             if(res.ok) {
-                auth.setUser(res.data.name, false)
+                auth.setUser(res.dataf.name, true)
             }
         })
     }
