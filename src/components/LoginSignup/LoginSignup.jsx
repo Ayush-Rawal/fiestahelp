@@ -45,7 +45,7 @@ function EmailLoginSignup ({screen}) {
         if(screen === "signup" && password !== password2) {
             console.log("Passwords don't match")
         }
-        fetch(`https://fiestahelp.herokuapp.com/auth/${(screen === "signup" ? "register": "")}`, {
+        fetch(`https://fiestahelp.herokuapp.com/auth/${(screen === "signup" ? "register": "login")}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

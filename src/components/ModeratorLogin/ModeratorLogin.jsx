@@ -10,7 +10,7 @@ export function ModeratorLogin() {
 
     function submit(e) {
         e.preventDefault()
-        fetch(`https://fiestahelp.herokuapp.com/auth/`, {
+        fetch(`https://fiestahelp.herokuapp.com/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

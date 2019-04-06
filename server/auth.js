@@ -27,10 +27,15 @@ router.get('/github/cb',
   }
 );
   
-router.post('/', function(req, res) {
+router.post('/login', function(req, res) {
+    if(!req.body.email || !req.body.password) {
+        return res.json({ok:false, err: "Insufficient arguments"})
+    }
+    console.log(req.body)
     user.findOne({
         email: req.body.email
       }, function(err, user) {
+          console.log(user)
         if (err) {
           return res.json({ok:false,err});
         }
