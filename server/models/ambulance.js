@@ -1,7 +1,5 @@
 const mongoose = require("mongoose")
 
-var ambulance = mongoose.model('ambulance', ambulanceSchema)
-
 var ambulanceSchema = new mongoose.Schema({
     name: String,
     driver: {
@@ -12,6 +10,8 @@ var ambulanceSchema = new mongoose.Schema({
 })
 
 ambulanceSchema.index({booked: 1})
+
+var ambulance = mongoose.model('ambulance', ambulanceSchema)
 
 module.exports = {
     ambulance
