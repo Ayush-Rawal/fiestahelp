@@ -12,7 +12,7 @@ const api = require("./server/api")
 
 app.use(cors())
 
-mongoose.connect('mongodb://localhost:27017/fiesta', {useNewUrlParser: true})
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/fiesta', {useNewUrlParser: true})
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -43,4 +43,4 @@ app.get("*", function (req, res) {
     return res.sendFile(path.resolve(__dirname, "./build/index.html"))
 })
 
-app.listen(process.env.port || 8080, () => console.log(`listening on ${process.env.port || 8080}`))
+app.listen(process.env.PORT || 8080, () => console.log(`listening on ${process.env.PORT || 8080}`))
