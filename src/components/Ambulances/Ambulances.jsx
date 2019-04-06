@@ -80,9 +80,9 @@ export function Ambulances() {
             <article className={css.ambulance__container}>
                 {ambulances.map(showAmbulance)}
             </article>
-            )
-        :
-            <Loading />}
+        ) : (
+            <Loading />
+        )}
         </>
     )
 }

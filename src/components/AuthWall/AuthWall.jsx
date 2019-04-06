@@ -18,7 +18,7 @@ export function AuthWall({children, ...rest}) {
                     value.isAuthenticated?
                     children
                     :
-                    <LoginSignup />
+                    (<LoginSignup />)
                 )}
             </AuthContext.Consumer>            
     )
