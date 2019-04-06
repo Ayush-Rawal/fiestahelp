@@ -14,13 +14,13 @@ export function Ambulances() {
                 setAmbulances(res.data)
             }
         })
-    })
+    }, [])
     return (
         <>
         <h2 className={css.title}>Ambulances</h2>
-        {ambulances.length ? (
+        {ambulances.length >= 0 ? (
             <article className={css.ambulance__container}>
-                {ambulances.map(showAmbulance)}
+                {ambulances.length > 0 ? ambulances.map(showAmbulance) : <p>No ambulances to show</p>}
             </article>
         ) : (
             <Loading />
