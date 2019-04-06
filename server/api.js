@@ -12,7 +12,10 @@ router.get('/ambulance', function(req, res) {
 })
 
 router.post('/ambulance', function (req, res) {
-    if(!req.body.name || !req.body.driver.name || !req.body.driver.phone) {
+    if(!req.body.name || !req.body.driver) {
+        return res.json({ok:false, err: "Insufficient arguments"})
+    }
+    if(!req.body.driver.name || !req.body.driver.phone) {
         return res.json({ok:false, err: "Insufficient arguments"})
     }
     ambulance.create({
